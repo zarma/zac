@@ -1,0 +1,426 @@
+!SESSION 2009-08-09 21:36:31.218 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 2 0 2009-08-09 21:42:29.640
+!MESSAGE Error parsing metadata repository
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2009-08-09 21:42:29.640
+!MESSAGE Error at line 9, column 99: Missing required attribute in "repository": url
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2009-08-09 21:42:29.640
+!MESSAGE Error at line 9, column 99: Illegal value for attribute "url" of element "repository": null
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2009-08-09 21:42:29.640
+!MESSAGE Error at line 10, column 99: Missing required attribute in "repository": url
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2009-08-09 21:42:29.640
+!MESSAGE Error at line 10, column 99: Illegal value for attribute "url" of element "repository": null
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2009-08-09 21:42:29.640
+!MESSAGE Error at line 11, column 97: Missing required attribute in "repository": url
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2009-08-09 21:42:29.640
+!MESSAGE Error at line 11, column 97: Illegal value for attribute "url" of element "repository": null
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2009-08-09 21:42:29.640
+!MESSAGE Error at line 12, column 97: Missing required attribute in "repository": url
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2009-08-09 21:42:29.640
+!MESSAGE Error at line 12, column 97: Illegal value for attribute "url" of element "repository": null
+!SESSION 2009-08-09 21:45:30.812 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.python.pydev 4 4 2009-08-09 21:48:23.343
+!MESSAGE java.io.IOException: Cannot run program "python": CreateProcess error=2, Le fichier spécifié est introuvable
+!STACK 0
+java.lang.RuntimeException: java.io.IOException: Cannot run program "python": CreateProcess error=2, Le fichier spécifié est introuvable
+	at org.python.pydev.runners.SimpleRunner.run(SimpleRunner.java:345)
+	at org.python.pydev.runners.SimpleRunner.runAndGetOutput(SimpleRunner.java:361)
+	at org.python.pydev.runners.SimplePythonRunner.runAndGetOutputWithInterpreter(SimplePythonRunner.java:87)
+	at org.python.pydev.ui.interpreters.PythonInterpreterManager.doCreateInterpreterInfo(PythonInterpreterManager.java:60)
+	at org.python.pydev.ui.interpreters.PythonInterpreterManager.internalCreateInterpreterInfo(PythonInterpreterManager.java:42)
+	at org.python.pydev.ui.interpreters.AbstractInterpreterManager.createInterpreterInfo(AbstractInterpreterManager.java:204)
+	at org.python.pydev.ui.pythonpathconf.ObtainInterpreterInfoOperation.run(ObtainInterpreterInfoOperation.java:75)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: java.io.IOException: Cannot run program "python": CreateProcess error=2, Le fichier spécifié est introuvable
+	at java.lang.ProcessBuilder.start(Unknown Source)
+	at java.lang.Runtime.exec(Unknown Source)
+	at org.python.pydev.runners.SimpleRunner.createProcess(SimpleRunner.java:42)
+	at org.python.pydev.runners.SimpleRunner.run(SimpleRunner.java:343)
+	... 7 more
+Caused by: java.io.IOException: CreateProcess error=2, Le fichier spécifié est introuvable
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(Unknown Source)
+	at java.lang.ProcessImpl.start(Unknown Source)
+	... 11 more
+
+!ENTRY org.python.pydev 4 4 2009-08-09 21:48:26.390
+!MESSAGE java.io.IOException: Cannot run program "python": CreateProcess error=2, Le fichier spécifié est introuvable
+!STACK 0
+java.lang.RuntimeException: java.io.IOException: Cannot run program "python": CreateProcess error=2, Le fichier spécifié est introuvable
+	at org.python.pydev.runners.SimpleRunner.run(SimpleRunner.java:345)
+	at org.python.pydev.runners.SimpleRunner.runAndGetOutput(SimpleRunner.java:361)
+	at org.python.pydev.runners.SimplePythonRunner.runAndGetOutputWithInterpreter(SimplePythonRunner.java:87)
+	at org.python.pydev.ui.interpreters.PythonInterpreterManager.doCreateInterpreterInfo(PythonInterpreterManager.java:60)
+	at org.python.pydev.ui.interpreters.PythonInterpreterManager.internalCreateInterpreterInfo(PythonInterpreterManager.java:42)
+	at org.python.pydev.ui.interpreters.AbstractInterpreterManager.createInterpreterInfo(AbstractInterpreterManager.java:204)
+	at org.python.pydev.ui.pythonpathconf.ObtainInterpreterInfoOperation.run(ObtainInterpreterInfoOperation.java:75)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: java.io.IOException: Cannot run program "python": CreateProcess error=2, Le fichier spécifié est introuvable
+	at java.lang.ProcessBuilder.start(Unknown Source)
+	at java.lang.Runtime.exec(Unknown Source)
+	at org.python.pydev.runners.SimpleRunner.createProcess(SimpleRunner.java:42)
+	at org.python.pydev.runners.SimpleRunner.run(SimpleRunner.java:343)
+	... 7 more
+Caused by: java.io.IOException: CreateProcess error=2, Le fichier spécifié est introuvable
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(Unknown Source)
+	at java.lang.ProcessImpl.start(Unknown Source)
+	... 11 more
+
+!ENTRY org.python.pydev 1 1 2009-08-09 21:48:26.390
+!MESSAGE Information about process of adding new interpreter:
+- Chosen interpreter (name and file):'Tuple [python -- python]
+- Ok, file is non-null. Getting info on:python
+- Beggining task:Getting libs totalWork:100
+- Setting task name:Mounting executable string...
+- Setting task name:Executing:  python -u "F:\Program files\eclipse\ganymede\eclipse\plugins\org.python.pydev_1.4.7.2843\PySrc\interpreterInfo.py"
+- Setting task name:Making pythonpath environment... python -u "F:\Program files\eclipse\ganymede\eclipse\plugins\org.python.pydev_1.4.7.2843\PySrc\interpreterInfo.py"
+- Setting task name:Making exec... python -u "F:\Program files\eclipse\ganymede\eclipse\plugins\org.python.pydev_1.4.7.2843\PySrc\interpreterInfo.py"
+Exception detected: java.io.IOException: Cannot run program "python": CreateProcess error=2, Le fichier spécifié est introuvable
+- Some error happened while getting info on the interpreter:
+java.lang.RuntimeException: java.io.IOException: Cannot run program "python": CreateProcess error=2, Le fichier spécifié est introuvable
+	at org.python.pydev.runners.SimpleRunner.run(SimpleRunner.java:345)
+	at org.python.pydev.runners.SimpleRunner.runAndGetOutput(SimpleRunner.java:361)
+	at org.python.pydev.runners.SimplePythonRunner.runAndGetOutputWithInterpreter(SimplePythonRunner.java:87)
+	at org.python.pydev.ui.interpreters.PythonInterpreterManager.doCreateInterpreterInfo(PythonInterpreterManager.java:60)
+	at org.python.pydev.ui.interpreters.PythonInterpreterManager.internalCreateInterpreterInfo(PythonInterpreterManager.java:42)
+	at org.python.pydev.ui.interpreters.AbstractInterpreterManager.createInterpreterInfo(AbstractInterpreterManager.java:204)
+	at org.python.pydev.ui.pythonpathconf.ObtainInterpreterInfoOperation.run(ObtainInterpreterInfoOperation.java:75)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: java.io.IOException: Cannot run program "python": CreateProcess error=2, Le fichier spécifié est introuvable
+	at java.lang.ProcessBuilder.start(Unknown Source)
+	at java.lang.Runtime.exec(Unknown Source)
+	at org.python.pydev.runners.SimpleRunner.createProcess(SimpleRunner.java:42)
+	at org.python.pydev.runners.SimpleRunner.run(SimpleRunner.java:343)
+	... 7 more
+Caused by: java.io.IOException: CreateProcess error=2, Le fichier spécifié est introuvable
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(Unknown Source)
+	at java.lang.ProcessImpl.start(Unknown Source)
+	... 11 more
+
+
+!ENTRY org.python.pydev 1 1 2009-08-09 21:49:15.562
+!MESSAGE Information about process of adding new interpreter:
+- Opening dialog to request executable (or jar).
+- Chosen interpreter (name and file):'Tuple [Python26 -- F:\Python26\python.exe]
+- Ok, file is non-null. Getting info on:F:\Python26\python.exe
+- Beggining task:Getting libs totalWork:100
+- Setting task name:Mounting executable string...
+- Setting task name:Executing:  F:\Python26\python.exe -u "F:\Program files\eclipse\ganymede\eclipse\plugins\org.python.pydev_1.4.7.2843\PySrc\interpreterInfo.py"
+- Setting task name:Making pythonpath environment... F:\Python26\python.exe -u "F:\Program files\eclipse\ganymede\eclipse\plugins\org.python.pydev_1.4.7.2843\PySrc\interpreterInfo.py"
+- Setting task name:Making exec... F:\Python26\python.exe -u "F:\Program files\eclipse\ganymede\eclipse\plugins\org.python.pydev_1.4.7.2843\PySrc\interpreterInfo.py"
+- Setting task name:Reading output...
+- Setting task name:Waiting for process to finish.
+- Success getting the info. Result:Name:Python26:EndName:Version2.6Executable:F:\Python26\python.exe|C:\WINDOWS\system32\python26.zip|F:\Program files\eclipse\ganymede\eclipse\plugins\org.python.pydev_1.4.7.2843\PySrc|F:\Python26|F:\Python26\DLLs|F:\Python26\lib|F:\Python26\lib\lib-tk|F:\Python26\lib\plat-win|F:\Python26\lib\site-packages@$|OpenGL|__builtin__|__main__|_ast|_bisect|_bytesio|_codecs|_codecs_cn|_codecs_hk|_codecs_iso2022|_codecs_jp|_codecs_kr|_codecs_tw|_collections|_csv|_fileio|_functools|_heapq|_hotshot|_json|_locale|_lsprof|_md5|_multibytecodec|_random|_sha|_sha256|_sha512|_sre|_struct|_subprocess|_symtable|_warnings|_weakref|_winreg|array|audioop|binascii|cPickle|cStringIO|cmath|datetime|email|errno|exceptions|future_builtins|gc|imageop|imp|itertools|marshal|math|mmap|msvcrt|nt|operator|os|os.path|parser|signal|strop|sys|thread|time|wx|wxPython|xxsubtype|zipimport|zlib
+
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-09 21:50:58.937
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
+!SESSION 2009-08-10 20:09:29.218 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-10 20:10:03.515
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
+!SESSION 2009-08-10 21:21:00.984 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-10 21:21:07.875
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
+!SESSION 2009-08-10 22:44:35.953 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-10 22:44:44.109
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
+!SESSION 2009-08-10 23:07:19.453 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-10 23:07:26.671
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
+
+!ENTRY org.eclipse.jface 4 0 2009-08-10 23:27:35.328
+!MESSAGE /icons/python_file.gif
+!STACK 0
+java.io.FileNotFoundException: /icons/python_file.gif
+	at org.eclipse.osgi.framework.internal.protocol.bundleentry.Handler.findBundleEntry(Handler.java:44)
+	at org.eclipse.osgi.framework.internal.core.BundleResourceHandler.openConnection(BundleResourceHandler.java:168)
+	at java.net.URL.openConnection(Unknown Source)
+	at org.eclipse.core.runtime.internal.adaptor.URLConverterImpl.toFileURL(URLConverterImpl.java:31)
+	at org.eclipse.core.runtime.FileLocator.toFileURL(FileLocator.java:165)
+	at org.eclipse.jface.resource.URLImageDescriptor.getFilePath(URLImageDescriptor.java:137)
+	at org.eclipse.jface.resource.URLImageDescriptor.createImage(URLImageDescriptor.java:157)
+	at org.eclipse.jface.resource.ImageDescriptor.createResource(ImageDescriptor.java:165)
+	at org.eclipse.jface.resource.DeviceResourceManager.allocate(DeviceResourceManager.java:56)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:88)
+	at org.eclipse.jface.resource.LocalResourceManager.allocate(LocalResourceManager.java:82)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:88)
+	at org.eclipse.jface.resource.ResourceManager.createImageWithDefault(ResourceManager.java:192)
+	at org.eclipse.jface.action.ActionContributionItem.updateImages(ActionContributionItem.java:1116)
+	at org.eclipse.jface.action.ActionContributionItem.update(ActionContributionItem.java:941)
+	at org.eclipse.jface.action.ActionContributionItem.fill(ActionContributionItem.java:290)
+	at org.eclipse.ui.internal.console.ConsoleDropDownAction.addActionToMenu(ConsoleDropDownAction.java:107)
+	at org.eclipse.ui.internal.console.ConsoleDropDownAction.getMenu(ConsoleDropDownAction.java:91)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:529)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:452)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+
+!ENTRY org.eclipse.jface 2 0 2009-08-10 23:27:35.328
+!MESSAGE The image could not be loaded: URLImageDescriptor(bundleentry://703/icons/python_file.gif)
+!STACK 0
+org.eclipse.jface.resource.DeviceResourceException: Unable to create resource URLImageDescriptor(bundleentry://703/icons/python_file.gif)
+	at org.eclipse.jface.resource.ImageDescriptor.createResource(ImageDescriptor.java:167)
+	at org.eclipse.jface.resource.DeviceResourceManager.allocate(DeviceResourceManager.java:56)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:88)
+	at org.eclipse.jface.resource.LocalResourceManager.allocate(LocalResourceManager.java:82)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:88)
+	at org.eclipse.jface.resource.ResourceManager.createImageWithDefault(ResourceManager.java:192)
+	at org.eclipse.jface.action.ActionContributionItem.updateImages(ActionContributionItem.java:1116)
+	at org.eclipse.jface.action.ActionContributionItem.update(ActionContributionItem.java:941)
+	at org.eclipse.jface.action.ActionContributionItem.fill(ActionContributionItem.java:290)
+	at org.eclipse.ui.internal.console.ConsoleDropDownAction.addActionToMenu(ConsoleDropDownAction.java:107)
+	at org.eclipse.ui.internal.console.ConsoleDropDownAction.getMenu(ConsoleDropDownAction.java:91)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:529)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:452)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+
+!ENTRY org.eclipse.jface 4 0 2009-08-10 23:27:37.078
+!MESSAGE /icons/python_file.gif
+!STACK 0
+java.io.FileNotFoundException: /icons/python_file.gif
+	at org.eclipse.osgi.framework.internal.protocol.bundleentry.Handler.findBundleEntry(Handler.java:44)
+	at org.eclipse.osgi.framework.internal.core.BundleResourceHandler.openConnection(BundleResourceHandler.java:168)
+	at java.net.URL.openConnection(Unknown Source)
+	at org.eclipse.core.runtime.internal.adaptor.URLConverterImpl.toFileURL(URLConverterImpl.java:31)
+	at org.eclipse.core.runtime.FileLocator.toFileURL(FileLocator.java:165)
+	at org.eclipse.jface.resource.URLImageDescriptor.getFilePath(URLImageDescriptor.java:137)
+	at org.eclipse.jface.resource.URLImageDescriptor.createImage(URLImageDescriptor.java:157)
+	at org.eclipse.jface.resource.ImageDescriptor.createResource(ImageDescriptor.java:165)
+	at org.eclipse.jface.resource.DeviceResourceManager.allocate(DeviceResourceManager.java:56)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:88)
+	at org.eclipse.jface.resource.LocalResourceManager.allocate(LocalResourceManager.java:82)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:88)
+	at org.eclipse.jface.resource.ResourceManager.createImageWithDefault(ResourceManager.java:192)
+	at org.eclipse.jface.action.ActionContributionItem.updateImages(ActionContributionItem.java:1116)
+	at org.eclipse.jface.action.ActionContributionItem.update(ActionContributionItem.java:941)
+	at org.eclipse.jface.action.ActionContributionItem.fill(ActionContributionItem.java:290)
+	at org.eclipse.ui.internal.console.ConsoleDropDownAction.addActionToMenu(ConsoleDropDownAction.java:107)
+	at org.eclipse.ui.internal.console.ConsoleDropDownAction.getMenu(ConsoleDropDownAction.java:91)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:529)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:452)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+
+!ENTRY org.eclipse.jface 2 0 2009-08-10 23:27:37.078
+!MESSAGE The image could not be loaded: URLImageDescriptor(bundleentry://703/icons/python_file.gif)
+!STACK 0
+org.eclipse.jface.resource.DeviceResourceException: Unable to create resource URLImageDescriptor(bundleentry://703/icons/python_file.gif)
+	at org.eclipse.jface.resource.ImageDescriptor.createResource(ImageDescriptor.java:167)
+	at org.eclipse.jface.resource.DeviceResourceManager.allocate(DeviceResourceManager.java:56)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:88)
+	at org.eclipse.jface.resource.LocalResourceManager.allocate(LocalResourceManager.java:82)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:88)
+	at org.eclipse.jface.resource.ResourceManager.createImageWithDefault(ResourceManager.java:192)
+	at org.eclipse.jface.action.ActionContributionItem.updateImages(ActionContributionItem.java:1116)
+	at org.eclipse.jface.action.ActionContributionItem.update(ActionContributionItem.java:941)
+	at org.eclipse.jface.action.ActionContributionItem.fill(ActionContributionItem.java:290)
+	at org.eclipse.ui.internal.console.ConsoleDropDownAction.addActionToMenu(ConsoleDropDownAction.java:107)
+	at org.eclipse.ui.internal.console.ConsoleDropDownAction.getMenu(ConsoleDropDownAction.java:91)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:529)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:452)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SESSION 2009-08-11 18:14:38.765 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-11 18:15:13.828
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
+
+!ENTRY org.eclipse.ui.workbench 2 0 2009-08-11 18:15:45.437
+!MESSAGE A handler conflict occurred.  This may disable some commands.
+!SUBENTRY 1 org.eclipse.ui.workbench 2 0 2009-08-11 18:15:45.437
+!MESSAGE Conflict for 'org.eclipse.wst.sse.ui.format':
+HandlerActivation(commandId=org.eclipse.wst.sse.ui.format,
+	handler=org.eclipse.wst.sse.ui.internal.handlers.FormatHandler,
+	expression=org.eclipse.core.internal.expressions.ReferenceExpression@d4f4315e,sourcePriority=1073741824)
+HandlerActivation(commandId=org.eclipse.wst.sse.ui.format,
+	handler=org.eclipse.wst.sse.ui.internal.handlers.FormatHandler,
+	expression=org.eclipse.core.internal.expressions.ReferenceExpression@429a8fde,sourcePriority=1073741824)
+!SESSION 2009-08-11 20:27:38.171 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-11 20:28:08.156
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
+!SESSION 2009-08-11 22:12:02.515 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-11 22:13:30.750
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
+!SESSION 2009-08-12 01:11:13.328 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-12 01:11:40.656
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
+!SESSION 2009-08-12 20:42:28.937 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-12 20:42:56.296
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
+!SESSION 2009-08-12 21:22:40.984 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-12 21:22:48.656
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
+!SESSION 2009-08-13 17:24:03.281 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_07
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_FR
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.datatools.sqltools.parsers.sql.query 4 0 2009-08-13 17:24:47.500
+!MESSAGE configuration: parserExtension in extension-point: org.eclipse.datatools.sqltools.parsers.sql.query.vendorExtension could not be found.
