@@ -1,0 +1,6 @@
+_wp=_newgroup addWaypoint[_pos_start, 0];
+_wp setWaypointBehaviour "SAFE";
+_wp setWaypointSpeed "NORMAL";
+_wp setwaypointtype "MOVE";
+_wp setWaypointFormation "COLUMN";
+_wp setWaypointTimeout [60,80,70];

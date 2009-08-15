@@ -1,0 +1,3 @@
+registre
+HKEY_CLASSES_ROOT\.sqm
+HKEY_CLASSES_ROOT\sqf_auto_file\shell\open\command
