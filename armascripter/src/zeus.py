@@ -43,6 +43,8 @@ def selection(p):
             result=True
         if p in ("Waypoints"):
             result=True
+        if p in ("Sensors"):
+            result=True            
     return result
 
 
@@ -50,9 +52,13 @@ def scriptsqf(p):
 #====== intitialisation des variables ==========================================    
     markers , placement , special, skill, armor = "[]","0","NONE",0,1 
     speed=formation=type=behaviour=""
+    combatMode=""
+    completitionRadius=0
+    a=b=50
+    age=angle=""
 #===============================================================================
 
-
+    n=0
     lescript = []
     finobjet=False
     niveaus=niveauc=0 # niveau de l'objet selectionné et niveau courrant
@@ -63,94 +69,154 @@ def scriptsqf(p):
         if selection(str(i[-1])):
             classe = str(i[-1])
             niveaus = niveauc + 1 # stockage du niveau de l'accolade suivante
-            print i, "OK"
+           
         chaine = "vehicle"
-        if chaine in i > -1:
-            print i[1]
+        if chaine == i[0]:
             letype = i[1].rstrip(";")
         chaine = "azimut"
-        if chaine in i > -1:
+        if chaine == i[0]:
             azimut = i[1].rstrip(";")
         chaine = "position[]"
-        if chaine in i > -1:
-            laposition = i[1].rstrip(";").rstrip("};") + ",0"
-            liste = laposition.split(",")
+        if chaine == i[0]:
+            position = i[1].rstrip(";").lstrip("{;").rstrip("};") + ",0"
+            liste = position.split(",")
             liste.pop(1)
-            laposition = str(liste).lstrip("[").rstrip("]").replace("'", "")
+            position = str(liste).lstrip("[").rstrip("]").replace("'", "")
         chaine = "skill"
-        if chaine in i > -1:
+        if chaine == i[0]:
             skill = i[1]
         chaine = "health"
-        if chaine in i > -1:
+        if chaine == i[0]:
             armor = i[1]
+        chaine = "placement"
+        if chaine == i[0]:
+            placement = i[1]           
+        chaine = "completitionRadius"
+        if chaine == i[0]:
+            completitionRadius = i[1]
         chaine = "type"
-        if chaine in i > -1:
+        if chaine == i[0]:
             type = i[1]
         chaine = "combatMode"
-        if chaine in i > -1:
+        if chaine == i[0]:
             combatMode = i[1]
         chaine = "formation"
-        if chaine in i > -1:
+        if chaine == i[0]:
             formation = i[1]
         chaine = "speed"
-        if chaine in i > -1:
+        if chaine == i[0]:
             speed = i[1]
         chaine = "combat"
-        if chaine in i > -1:
+        if chaine == i[0]:
             combat = i[1]
-        chaine = "};"
+        chaine = "a"
+        if chaine == i[0]:
+            a = i[1]
+        chaine = "b"
+        if chaine == i[0]:
+            b = i[1]
+        chaine ="angle"
+        if chaine == i[0]:
+	       angle = i[1]
+        chaine ="activationBy"
+        if chaine == i[0]:
+	       activationBy = i[1]
+        chaine ="repeating"
+        if chaine == i[0]:
+	       v = i[1]
+        chaine ="interruptable"
+        if chaine == i[0]:
+	       interruptable = i[1]
+        chaine ="age"
+        if age == i[0]:
+	       v = i[1]
+        chaine ="text"
+        if chaine == i[0]:
+	       text = i[1]
+        chaine ="name"
+        if chaine == i[0]:
+	       name = i[1]
+        chaine ="expActiv"
+        if chaine == i[0]:
+	       expActiv = i[1]
+        chaine ="expDesactiv"
+        if chaine == i[0]:
+	       expDesactiv = i[1]
+        chaine ="track"
+        if chaine == i[0]:
+	       track = i[1]
+        
+        chaine = "};"    # fin de classe
         if chaine in i > -1:
             niveauc = i[1]
             if niveauc == niveaus:
                 finobjet=True
             if niveauc < niveaus:
-                niveaus=0 # nous sommes à la fin d'une classe
+                niveaus=0 # nous sommes à la fin d'une classe selectionnée
         
         if finobjet:
+            n += 1
             if classe == "Vehicles":
                 lescript.append("")
-                result = "_pos = [" + laposition + "]"
+                result = "_pos = [" + position + "]"
                 lescript.append(result)
-                result = "_veh = createVehicle [" + letype + ", _pos," + markers + "," + placement + "," + special+"];"
+                
+                result = "_veh" + str(n) + " = createVehicle [" + letype + ", _pos," + markers + "," + placement + "," + special+"];"
                 lescript.append(result)
+                
                 if azimut:
-                    result = "_veh setDir " + azimut + ";"
+                    result = "_veh" + str(n) + " setDir " + azimut + ";"
                     lescript.append(result)
-                result = "_veh setPos _pos;"
+                    
+                result = "_veh" + str(n) + " setPos _pos;"
                 lescript.append(result)
-                print "skill " , skill
-                result = "_veh setSkill " + str(skill) 
+                                
+                result = "_veh" + str(n) + " setSkill " + str(skill) 
                 lescript.append(result)
+                
                 if armor != 1:
-                    result = "_veh setVehicleArmor " + str(armor) 
+                    result = "_veh" + str(n) + " setVehicleArmor " + str(armor) 
                     lescript.append(result)
+                    
                 lescript.append("")              
                 markers , placement , special, skill, armor = "[]","0","NONE",0,1
                 
                 
             if classe == "Waypoints":
                 lescript.append("")
+                if position:
+                    result = "_wp" + str(n) + " = _grp addWaypoint [" + position + "," + str(placement) + "];"
+                    lescript.append(result)
+                    
                 if formation:
-                    result = "_wp setWaypointFormation " + formation;
+                    result = "_wp" + str(n) + " setWaypointFormation " + formation;
                     lescript.append(result)
-                    print result
+                    
                 if type:
-                    result = "_wp setwaypointtype " + type
+                    result = "_wp" + str(n) + " setwaypointtype " + type
                     lescript.append(result)
-                    print result
+                    
                 if speed:
-                    result = "_wp setWaypointSpeed " + speed
+                    result = "_wp" + str(n) + " setWaypointSpeed " + speed
                     lescript.append(result)
-                    print result
-                if behaviour:
-                    result = "_wp setWaypointBehaviour " + behaviour
+                    
+                if combat:
+                    result = "_wp" + str(n) + " setWaypointBehaviour " + combat
                     lescript.append(result)
-                    print result
+                    
                 if combatMode:
-                    result = "_wp setCombatMode " + combatMode
+                    result = "_wp" + str(n) + " setCombatMode " + combatMode
                     lescript.append(result)
-                    print result
-                
+                    
+                    
+                    
+            if classe == "Sensors":
+                lescript.append("")
+                result = "_pos = [" + position + "]"
+                lescript.append(result)
+                result = "_t" + str(n) + "=createTrigger[\"EmptyDetector\",_pos];"
+                if position:
+                    print "Sensors"
             finobjet=False
 
             
