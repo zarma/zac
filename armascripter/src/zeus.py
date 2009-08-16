@@ -55,9 +55,11 @@ def scriptsqf(p):
     markers , placement , special, skill, armor = "[]","0","NONE",0,1 
     speed=formation=type=behaviour=""
     combatMode=""
-    completitionRadius=0
+    timeoutMin=timeoutMid=timeoutMix=completitionRadius=0
     a=b=50
+    repeating=0
     age=angle=""
+    expCond='"This"'
 #===============================================================================
 
     n=0
@@ -92,7 +94,7 @@ def scriptsqf(p):
             armor = i[1]
         chaine = "placement"
         if chaine == i[0]:
-            placement = i[1]           
+            placement = i[1].rstrip(";")           
         chaine = "completitionRadius"
         if chaine == i[0]:
             completitionRadius = i[1]
@@ -111,6 +113,21 @@ def scriptsqf(p):
         chaine = "combat"
         if chaine == i[0]:
             combat = i[1]
+        chaine ="description"
+        if chaine == i[0]:
+	       description = i[1]
+        chaine ="expActiv"
+        if chaine == i[0]:
+	       expActiv = i[1].rstrip(";")
+        chaine ="timeoutMin"
+        if chaine == i[0]:
+	       timeoutMin = i[1].rstrip(";")
+        chaine ="timeoutMid"
+        if chaine == i[0]:
+           timeoutMid = i[1].rstrip(";")
+        chaine ="timeoutMax"
+        if chaine == i[0]:
+           timeoutMax = i[1].rstrip(";")                   
         chaine = "a"
         if chaine == i[0]:
             a = i[1]
@@ -119,16 +136,22 @@ def scriptsqf(p):
             b = i[1]
         chaine ="angle"
         if chaine == i[0]:
-	       angle = i[1]
+	       angle = i[1].rstrip(";")
+        chaine ="rectangular"
+        if chaine == i[0]:
+	       rectangular = i[1].rstrip(";")        
         chaine ="activationBy"
         if chaine == i[0]:
-	       activationBy = i[1]
+	       activationBy = i[1].rstrip(";")
+        chaine ="activationType"
+        if chaine == i[0]:
+	       activationType = i[1].rstrip(";")
         chaine ="repeating"
         if chaine == i[0]:
-	       v = i[1]
+	       repeating = i[1].rstrip(";")
         chaine ="interruptable"
         if chaine == i[0]:
-	       interruptable = i[1]
+	       interruptable = i[1].rstrip(";")
         chaine ="age"
         if age == i[0]:
 	       v = i[1]
@@ -138,12 +161,15 @@ def scriptsqf(p):
         chaine ="name"
         if chaine == i[0]:
 	       name = i[1]
+        chaine ="expCond"
+        if chaine == i[0]:
+           expActiv = i[1].rstrip(";")           
         chaine ="expActiv"
         if chaine == i[0]:
-	       expActiv = i[1]
+	       expActiv = i[1].rstrip(";")
         chaine ="expDesactiv"
         if chaine == i[0]:
-	       expDesactiv = i[1]
+	       expDesactiv = i[1].rstrip(";")
         chaine ="track"
         if chaine == i[0]:
 	       track = i[1]
@@ -209,16 +235,57 @@ def scriptsqf(p):
                 if combatMode:
                     result = "_wp" + str(n) + " setCombatMode " + combatMode
                     lescript.append(result)
-                    
-                    
+                
+                if completitionRadius:
+                    result = "_wp" + str(n) + " setWaypointCompletionRadius " + completitionRadius
+                    lescript.append(result)
+
+                if description:
+                    result = "_wp" + str(n) + " setWaypointDescription " + description
+                    lescript.append(result)                    
+                
+                if expActiv:
+                    result = "_wp" + str(n) + " setWaypointStatements [condition, " + expActiv + "];" 
+                    lescript.append(result)    
+                print "time ", timeoutMin, timeoutMid, timeoutMax
+                if timeoutMin or timeoutMid or timeoutMax:
+                    result = "_wp" + str(n) + " setWaypointTimeout ["+ str(timeoutMin) +","+ str(timeoutMid) +","+ str(timeoutMax) + "];" 
+                    lescript.append(result)
                     
             if classe == "Sensors":
                 lescript.append("")
                 result = "_pos = [" + position + "]"
                 lescript.append(result)
-                result = "_t" + str(n) + "=createTrigger[\"EmptyDetector\",_pos];"
-                if position:
-                    print "Sensors"
+
+                result = "_t" + str(n) + " = createTrigger[\"EmptyDetector\",_pos];"
+                lescript.append(result)
+                
+                if repeating == "1": tf = "true" 
+                else: tf="False"
+                if activationType=="":activationType='"PRESENT"'
+                result = "_t" + str(n) + " setTriggerActivation [" + activationBy + ", " + activationType + ", " + tf + "];"
+                lescript.append(result)
+                
+                if rectangular: tf="True"
+                else: tf="False"
+                result = "_t" + str(n) + " setTriggerArea [" + str(a) + "," + str(b) + "," + angle + "," + tf + "];" 
+                lescript.append(result)
+                
+                if expActiv:
+                    result = "_t" + str(n) + " setTriggerStatements [" + expCond +","+  expActiv +","+ expDesactiv + "];" 
+                    lescript.append(result)
+                    
+                print "time ", timeoutMin, timeoutMid, timeoutMax
+                if interruptable == "1": tf = "true" 
+                else: tf="False"
+                if timeoutMin or timeoutMid or timeoutMax:
+                    result = "_t" + str(n) + " setTriggerTimeout ["+ str(timeoutMin) +","+ str(timeoutMid) +","+ str(timeoutMax) + "," +tf + "];" 
+                    lescript.append(result)                
+                
+                if text:
+                    result = "_t" + str(n) + " setTriggerText " + text  
+                    lescript.append(result)
+                        
             finobjet=False
 
             

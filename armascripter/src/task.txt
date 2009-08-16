@@ -1,23 +1,6 @@
-http://www.innosetup.com/isfaq.php
-
-Creating File Associations
-
-    First set the [Setup] section directive "ChangesAssociations" to "yes". Then create [Registry] entries as shown below.
-
-    [Registry]
-    Root: HKCR; Subkey: ".myp"; ValueType: string; ValueName: ""; ValueData: "MyProgramFile"; Flags: uninsdeletevalue
-
-        ".myp" is the extension we're associating. "MyProgramFile" is the internal name for the file type as stored in the registry. Make sure you use a unique name for this so you don't inadvertently overwrite another application's registry key. 
-
-    Root: HKCR; Subkey: "MyProgramFile"; ValueType: string; ValueName: ""; ValueData: "My Program File"; Flags: uninsdeletekey
-
-        "My Program File" above is the name for the file type as shown in Explorer. 
-
-    Root: HKCR; Subkey: "MyProgramFile\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\MYPROG.EXE,0"
-
-        "DefaultIcon" is the registry key that specifies the filename containing the icon to associate with the file type. ",0" tells Explorer to use the first icon from MYPROG.EXE. (",1" would mean the second icon.) 
-
-    Root: HKCR; Subkey: "MyProgramFile\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\MYPROG.EXE"" ""%1"""
-
-        "shell\open\command" is the registry key that specifies the program to execute when a file of the type is double-clicked in Explorer. The surrounding quotes are in the command line so it handles long filenames correctly. 
-
+Sensors
+	settriggeractivation 2e param a completer
+	setTriggerArea [xrad, yrad, angle, rectangle]  xrad ??? voir doc BIS sur les longueurs
+	faire le test en posant un marqueur de même dimension (avec l'éditeur) avec un hint sur le trigger.
+	
+	Faire un trigger rectangle pour tester rectangle, tester avec absent
