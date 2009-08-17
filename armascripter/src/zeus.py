@@ -186,10 +186,10 @@ def scriptsqf(p):
             n += 1
             if classe == "Vehicles":
                 lescript.append("")
-                result = "_pos = [" + position + "]"
+                result = "_pos = [" + position + "];"
                 lescript.append(result)
                 
-                result = "_veh" + str(n) + " = createVehicle [" + letype + ", _pos," + markers + "," + placement + "," + special+"];"
+                result = "_veh" + str(n) + " = createVehicle [" + letype + ", _pos," + markers + "," + placement + ",\"" + special +"\"];"
                 lescript.append(result)
                 
                 if azimut:
@@ -254,7 +254,7 @@ def scriptsqf(p):
                     
             if classe == "Sensors":
                 lescript.append("")
-                result = "_pos = [" + position + "]"
+                result = "_pos = [" + position + "];"
                 lescript.append(result)
 
                 result = "_t" + str(n) + " = createTrigger[\"EmptyDetector\",_pos];"
