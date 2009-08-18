@@ -53,21 +53,26 @@ def selection(p):
 def scriptsqf(p):
 #====== intitialisation des variables ==========================================    
     markers , placement , special, skill, armor = "[]","0","NONE",0,1 
-    speed=formation=type=behaviour=""
-    combatMode=""
-    timeoutMin=timeoutMid=timeoutMix=completitionRadius=0
+    position=[]
+    speed=formation=type=behaviour=combat=description=expActiv=expDesactiv=""
+    combatMode=rectangular=interruptable=""
+    timeoutMin=timeoutMid=timeoutMax=completitionRadius=0
     a=b=50
     repeating=0
     age=angle=""
     expCond='"This"'
+    id="0"
+    classe=""
+    objetOk=False
 #===============================================================================
 
     n=0
     lescript = []
     finobjet=False
     niveaus=niveauc=0 # niveau de l'objet selectionné et niveau courrant
-    print "scriptsqf(p) \n" + str(p)
+#    print "scriptsqf(p) \n" + str(p)
     for i in p:
+        print i
         if i[0] == "{": niveauc = i[1]
         
         if selection(str(i[-1])):
@@ -77,6 +82,7 @@ def scriptsqf(p):
         chaine = "vehicle"
         if chaine == i[0]:
             letype = i[1].rstrip(";")
+            print letype
         chaine = "azimut"
         if chaine == i[0]:
             azimut = i[1].rstrip(";")
@@ -173,8 +179,22 @@ def scriptsqf(p):
         chaine ="track"
         if chaine == i[0]:
 	       track = i[1]
+           
+        chaine ="id"
+        if chaine == i[0]:
+           id = i[1]
         
+        if position:
+            objetOk=True
+           
+        chaine ="class"
+        if chaine == i[0]:
+            if "Item" in i[1]:
+                print "Item ----",i[1]
+                if objetOk:
+                    finobjet=True
         chaine = "};"    # fin de classe
+        print "classe,id", classe, id,niveauc,niveaus
         if chaine in i > -1:
             niveauc = i[1]
             if niveauc == niveaus:
@@ -182,10 +202,13 @@ def scriptsqf(p):
             if niveauc < niveaus:
                 niveaus=0 # nous sommes à la fin d'une classe selectionnée
         
-        if finobjet:
+        if finobjet and objetOk:
+            print "classe,id", classe, id
             n += 1
+            lescript.append("")
+            lescript.append("// id " + id)
             if classe == "Vehicles":
-                lescript.append("")
+                
                 result = "_pos = [" + position + "];"
                 lescript.append(result)
                 
@@ -211,7 +234,7 @@ def scriptsqf(p):
                 
                 
             if classe == "Waypoints":
-                lescript.append("")
+                
                 if position:
                     result = "_wp" + str(n) + " = _grp addWaypoint [" + position + "," + str(placement) + "];"
                     lescript.append(result)
@@ -247,13 +270,13 @@ def scriptsqf(p):
                 if expActiv:
                     result = "_wp" + str(n) + " setWaypointStatements [condition, " + expActiv + "];" 
                     lescript.append(result)    
-                print "time ", timeoutMin, timeoutMid, timeoutMax
+            
                 if timeoutMin or timeoutMid or timeoutMax:
                     result = "_wp" + str(n) + " setWaypointTimeout ["+ str(timeoutMin) +","+ str(timeoutMid) +","+ str(timeoutMax) + "];" 
                     lescript.append(result)
                     
             if classe == "Sensors":
-                lescript.append("")
+                
                 result = "_pos = [" + position + "];"
                 lescript.append(result)
 
@@ -262,9 +285,9 @@ def scriptsqf(p):
                 
                 if repeating == "1": tf = "true" 
                 else: tf="False"
-                if activationType=="":activationType='"PRESENT"'
-                result = "_t" + str(n) + " setTriggerActivation [" + activationBy + ", " + activationType + ", " + tf + "];"
-                lescript.append(result)
+#                if activationType=="":activationType='"PRESENT"'
+#                result = "_t" + str(n) + " setTriggerActivation [" + activationBy + ", " + activationType + ", " + tf + "];"
+#                lescript.append(result)
                 
                 if rectangular: tf="True"
                 else: tf="False"
@@ -285,8 +308,19 @@ def scriptsqf(p):
                 if text:
                     result = "_t" + str(n) + " setTriggerText " + text  
                     lescript.append(result)
-                        
+            objetOk=False           
             finobjet=False
+#====== intitialisation des variables ==========================================    
+            markers , placement , special, skill, armor = "[]","0","NONE",0,1 
+            position=[]
+            speed=formation=type=behaviour=combat=description=expActiv=expDesactiv=""
+            combatMode=rectangular=interruptable=""
+            timeoutMin=timeoutMid=timeoutMax=completitionRadius=0
+            a=b=50
+            repeating=0
+            age=angle=""
+            expCond='"This"'          
+#===============================================================================            
 
             
     return lescript
