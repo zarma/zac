@@ -13,14 +13,14 @@ class variablesobjet:
         self.azimut=""
         self.text=""
         self.markers=[]
-        self.placement=0
+        self.placement="0"
         self.special="NONE"
         self.skill=0
         self.armor=1
         self.position=[]
         self.speed=""
         self.formation=""
-        self.type=""
+        self.type="\"PRESENT\""
         self.behaviour=""
         self.combat=""
         self.description=""
@@ -29,15 +29,16 @@ class variablesobjet:
         self.combatMode=""
         self.rectangular=""
         self.interruptable=""
+        self.activationBy="\"NONE\""
         self.timeoutMin=0
         self.timeoutMid=0
         self.timeoutMax=0
         self.completitionRadius=0
         self.a=50
         self.b=50
-        self.repeating=0
+        self.repeating="0"
         self.age=""
-        self.angle=""
+        self.angle="0"
         self.expCond='"This"'
         self.id=""
         
@@ -83,7 +84,10 @@ def selection(p):
         if p in ("Waypoints"):
             result=True
         if p in ("Sensors"):
-            result=True            
+            result=True 
+        if p in ("Markers"):
+            result=True     
+                       
     return result
 
 
@@ -145,7 +149,7 @@ def scriptsqf(p):
             v.completitionRadius = i[1]
         chaine = "type"
         if chaine == i[0]:
-            v.type = i[1]
+            v.type = i[1].rstrip(";")
         chaine = "combatMode"
         if chaine == i[0]:
             v.combatMode = i[1]
@@ -199,7 +203,7 @@ def scriptsqf(p):
 	       v.age = i[1]
         chaine ="text"
         if chaine == i[0]:
-	       v.text = i[1]
+	       v.text = i[1].rstrip(";")
         chaine ="name"
         if chaine == i[0]:
 	       v.name = i[1]
@@ -208,10 +212,10 @@ def scriptsqf(p):
            v.expCond = i[1].rstrip(";")           
         chaine ="expActiv"
         if chaine == i[0]:
-	       v.expActiv = i[1].rstrip(";").replace("\"\"","\"")
+	       v.expActiv = i[1].rstrip(";").replace("\"\"","'")
         chaine ="expDesactiv"
         if chaine == i[0]:
-	       v.expDesactiv = i[1].rstrip(";").replace("\"\"","\"")
+	       v.expDesactiv = i[1].rstrip(";").replace("\"\"","'")
         chaine ="track"
         if chaine == i[0]:
 	       v.track = i[1]
@@ -253,6 +257,8 @@ def scriptsqf(p):
             if classe == "Vehicles":
                 
                 objname = "_veh" + str(n)
+                if v.text:
+                    objname=v.text.strip("\"")
                                     
                 result = "_pos = [" + v.position + "];"
                 lescript.append(result)
@@ -299,20 +305,26 @@ def scriptsqf(p):
                 objname = "_wp" + str(n)
                 if grouplistp:
                     groupname = "grp"+  str(groupnumber)
+                    result = groupname + " = createGroup (side " + grouplistp[0]+");"
+                    lescript.append(result)
                     result = str(grouplistp).replace("'", "") + " join " + groupname +";"
                     lescript.append(result)
                     print "grouplistp", grouplistp,result
                     grouplistp=[]
-                if v.position:
-                    result = objname + " = " + groupname +" addWaypoint [" + v.position + "," + str(v.placement) + "];"
-                    lescript.append(result)
+                
+                result = "_pos = [" + v.position + "];"
+                lescript.append(result)
+                result = "_radius = " + v.placement + ";"
+                lescript.append(result)
+                result = objname + " = " + groupname +" addWaypoint [_pos,_radius];"
+                lescript.append(result)
                     
                 if v.formation:
                     result = objname + " setWaypointFormation " + v.formation;
                     lescript.append(result)
                     
                 if v.type:
-                    result = objname + " setwaypointtype " + v.type
+                    result = objname + " setwaypointtype " + v.type + ";"
                     lescript.append(result)
                     
                 if v.speed:
@@ -324,7 +336,7 @@ def scriptsqf(p):
                     lescript.append(result)
                     
                 if v.combatMode:
-                    result = objname + " setCombatMode " + v.combatMode
+                    result = groupname + " setCombatMode " + v.combatMode
                     lescript.append(result)
                 
                 if v.completitionRadius:
@@ -336,7 +348,9 @@ def scriptsqf(p):
                     lescript.append(result)                    
                 
                 if v.expActiv:
-                    result = objname + " setWaypointStatements [condition, " + v.expActiv + "];" 
+                    condition = "true"
+                    print v.expActiv
+                    result = objname + " setWaypointStatements [" + condition + ", " + v.expActiv + "];" 
                     lescript.append(result)    
             
                 if v.timeoutMin or v.timeoutMid or v.timeoutMax:
@@ -365,7 +379,10 @@ def scriptsqf(p):
                 if v.expActiv:
                     result = objname + " setTriggerStatements [" + v.expCond +","+  v.expActiv +","+ v.expDesactiv + "];" 
                     lescript.append(result)
-                    
+                if v.repeating: tf="True"
+                else: tf="False"
+                result = objname + " setTriggerActivation [" + v.activationBy + "," + v.type + "," + tf + "];"
+                lescript.append(result) 
                 print "time ", v.timeoutMin, v.timeoutMid, v.timeoutMax
                 if v.interruptable == "1": tf = "true" 
                 else: tf="False"
@@ -389,7 +406,7 @@ def main():
     print "DEBUT", args     
     if "mission.sqm" in args[0]: 
         fmission = open (str(args[0]),"r")
-        chaine = str(args[0].rstrip("mission.sqm")) + "script.sqf"    
+        chaine = str(args[0].rstrip("mission.sqm")) + "zeusscript.sqf"    
         
         fsortie = open (chaine,"w")
          
