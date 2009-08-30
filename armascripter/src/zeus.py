@@ -20,7 +20,7 @@ class variablesobjet:
         self.position=[]
         self.speed=""
         self.formation=""
-        self.type="\"PRESENT\""
+        self.type=""
         self.behaviour=""
         self.combat=""
         self.description=""
@@ -118,10 +118,12 @@ def scriptsqf(p):
             niveaus = niveauc + 1 # stockage du niveau de l'accolade suivante
         if str(i[-1]) == "Groups" and niveauc == 2:
             isgroup=True   
-            print "isgroup", isgroup
         if isgroup and niveauc==2 and i[0] == "};":
             isgroup=False
-            
+ 
+        chaine = "side"
+        if chaine == i[0]:
+            side = i[1].rstrip(";").strip('"')         
         chaine = "vehicle"
         if chaine == i[0]:
             v.vehicule = i[1].rstrip(";")
@@ -228,6 +230,7 @@ def scriptsqf(p):
         if chaine == i[0]:
             if classe=="Vehicles" and isgroup and niveauc==4:
                 groupnumber +=1
+                groupname = "grp"+  str(groupnumber)
                 taillegroupe=resteagrouper=int(i[1].rstrip(";"))
 #                print "items", i[1],groupnumber,resteagrouper
         
@@ -262,9 +265,18 @@ def scriptsqf(p):
                                     
                 result = "_pos = [" + v.position + "];"
                 lescript.append(result)
-                
-                result = objname  + " = createVehicle [" + v.vehicule + ", _pos," + str(v.markers) + "," + str(v.placement) + ",\"" + str(v.special) +"\"];"
-                lescript.append(result)
+                print "taillegroupe ", taillegroupe
+                if taillegroupe: 
+                    grouplist += [objname]
+                    if taillegroupe == resteagrouper:
+                        result = groupname + " = createGroup (" + side + ");"
+                        lescript.append(result)                        
+                    resteagrouper-=1
+                    result = objname  + " = " + groupname +" createUnit [" + v.vehicule + ", _pos," + str(v.markers) + "," + str(v.placement) + ",\"" + str(v.special) +"\"];"
+                    lescript.append(result) 
+                else:
+                    result = objname  + " = createVehicle [" + v.vehicule + ", _pos," + str(v.markers) + "," + str(v.placement) + ",\"" + str(v.special) +"\"];"
+                    lescript.append(result)
                 
                 if v.azimut:
                     result = objname + " setDir " + v.azimut + ";"
@@ -280,18 +292,15 @@ def scriptsqf(p):
                     result = objname + " setVehicleArmor " + str(v.armor) 
                     lescript.append(result)
                     
-                if taillegroupe:
-                    grouplist += [objname]
-#                    print "resteagrouper", resteagrouper
-                    resteagrouper-=1
+     
                 
                 if len(grouplist)>1 and resteagrouper==0:
                     lescript.append("")
                     print "grouplist", grouplist
-                    groupname = "grp"+  str(groupnumber)
+                    
                     result = str(grouplist).replace("'", "") + " join " + groupname +";"
                     lescript.append(result)
-                    print result,niveauc
+#                    print result,niveauc
                 if niveauc==4:
                     grouplistp=grouplist
                     grouplist=[]
@@ -303,14 +312,14 @@ def scriptsqf(p):
                 
             if classe == "Waypoints":
                 objname = "_wp" + str(n)
-                if grouplistp:
-                    groupname = "grp"+  str(groupnumber)
-                    result = groupname + " = createGroup (side " + grouplistp[0]+");"
-                    lescript.append(result)
-                    result = str(grouplistp).replace("'", "") + " join " + groupname +";"
-                    lescript.append(result)
-                    print "grouplistp", grouplistp,result
-                    grouplistp=[]
+#                if grouplistp:
+#                    groupname = "grp"+  str(groupnumber)
+#                    result = groupname + " = createGroup (side " + grouplistp[0]+");"
+#                    lescript.append(result)
+#                    result = str(grouplistp).replace("'", "") + " join " + groupname +";"
+#                    lescript.append(result)
+#                    print "grouplistp", grouplistp,result
+#                    grouplistp=[]
                 
                 result = "_pos = [" + v.position + "];"
                 lescript.append(result)
@@ -323,9 +332,13 @@ def scriptsqf(p):
                     result = objname + " setWaypointFormation " + v.formation;
                     lescript.append(result)
                     
-                if v.type:
-                    result = objname + " setwaypointtype " + v.type + ";"
-                    lescript.append(result)
+                if  not v.type:
+                    v.type = "\"MOVE\"";
+                    
+                result = objname + " setwaypointtype " + v.type + ";"
+                lescript.append(result)
+                
+                   
                     
                 if v.speed:
                     result = objname + " setWaypointSpeed " + v.speed
@@ -381,6 +394,8 @@ def scriptsqf(p):
                     lescript.append(result)
                 if v.repeating: tf="True"
                 else: tf="False"
+                if not v.type:
+                    v.type = "\"PRESENT\""
                 result = objname + " setTriggerActivation [" + v.activationBy + "," + v.type + "," + tf + "];"
                 lescript.append(result) 
                 print "time ", v.timeoutMin, v.timeoutMid, v.timeoutMax
