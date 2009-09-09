@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#
+# V0.9
 # script made by Z
 #
 
@@ -59,7 +59,8 @@ def formatter(lignes):
     niveau=0 # gestion des niveaux d'accolades 
     for lig in lignes: 
         ligne = lig.strip()  
-        mots = ligne.split('=') ## Séparation variable / valeur    
+        mots = ligne.split('=',1) ## Séparation variable / valeur
+#        print "mots=", mots    
         if len(mots)==2:
             liste.append(mots)
         else:
@@ -120,6 +121,36 @@ def scriptsqf(p):
             isgroup=True   
         if isgroup and niveauc==2 and i[0] == "};":
             isgroup=False
+
+        if v.position:
+            objetOk=True
+           
+        chaine ="class"
+        if chaine == i[0]:
+            if "Item" in i[1]:
+                print "Item ----",i[1]
+                if objetOk:
+                    finobjet=True
+        chaine = "};"    # fin de classe
+#        print "classe,id", classe, v.id,niveauc,niveaus
+        if chaine in i > -1:
+            niveauc = i[1]
+            if niveauc == niveaus:
+                finobjet=True
+            if niveauc < niveaus:
+                niveaus=0 # nous sommes à la fin d'une classe selectionnée
+                
+        chaine ="id"
+        if chaine == i[0]:
+           v.id = i[1]
+           
+        chaine ="items"
+        if chaine == i[0]:
+            if classe=="Vehicles" and isgroup and niveauc==4:
+                groupnumber +=1
+                groupname = "grp"+  str(groupnumber)
+                taillegroupe=resteagrouper=int(i[1].rstrip(";"))
+#                print "items", i[1],groupnumber,resteagrouper
  
         chaine = "side"
         if chaine == i[0]:
@@ -178,10 +209,10 @@ def scriptsqf(p):
            v.timeoutMax = i[1].rstrip(";")                   
         chaine = "a"
         if chaine == i[0]:
-            v.a = i[1]
+            v.a = i[1].rstrip(";")
         chaine = "b"
         if chaine == i[0]:
-            v.b = i[1]
+            v.b = i[1].rstrip(";")
         chaine ="angle"
         if chaine == i[0]:
 	       v.angle = i[1].rstrip(";")
@@ -211,10 +242,10 @@ def scriptsqf(p):
 	       v.name = i[1]
         chaine ="expCond"
         if chaine == i[0]:
-           v.expCond = i[1].rstrip(";")           
+           v.expCond = i[1].rstrip(";")         
         chaine ="expActiv"
-        if chaine == i[0]:
-	       v.expActiv = i[1].rstrip(";").replace("\"\"","'")
+        if chaine == i[0]:            
+            v.expActiv = i[1].rstrip(";").replace("\"\"","'")
         chaine ="expDesactiv"
         if chaine == i[0]:
 	       v.expDesactiv = i[1].rstrip(";").replace("\"\"","'")
@@ -222,35 +253,9 @@ def scriptsqf(p):
         if chaine == i[0]:
 	       v.track = i[1]
            
-        chaine ="id"
-        if chaine == i[0]:
-           v.id = i[1]
-           
-        chaine ="items"
-        if chaine == i[0]:
-            if classe=="Vehicles" and isgroup and niveauc==4:
-                groupnumber +=1
-                groupname = "grp"+  str(groupnumber)
-                taillegroupe=resteagrouper=int(i[1].rstrip(";"))
-#                print "items", i[1],groupnumber,resteagrouper
+ 
         
-        if v.position:
-            objetOk=True
-           
-        chaine ="class"
-        if chaine == i[0]:
-            if "Item" in i[1]:
-#                print "Item ----",i[1]
-                if objetOk:
-                    finobjet=True
-        chaine = "};"    # fin de classe
-#        print "classe,id", classe, v.id,niveauc,niveaus
-        if chaine in i > -1:
-            niveauc = i[1]
-            if niveauc == niveaus:
-                finobjet=True
-            if niveauc < niveaus:
-                niveaus=0 # nous sommes à la fin d'une classe selectionnée
+ 
         
         if finobjet and objetOk:
 #            print "classe,id", classe, v.id
@@ -300,7 +305,7 @@ def scriptsqf(p):
                     
                     result = str(grouplist).replace("'", "") + " join " + groupname +";"
                     lescript.append(result)
-#                    print result,niveauc
+
                 if niveauc==4:
                     grouplistp=grouplist
                     grouplist=[]
@@ -311,16 +316,7 @@ def scriptsqf(p):
                 
                 
             if classe == "Waypoints":
-                objname = "_wp" + str(n)
-#                if grouplistp:
-#                    groupname = "grp"+  str(groupnumber)
-#                    result = groupname + " = createGroup (side " + grouplistp[0]+");"
-#                    lescript.append(result)
-#                    result = str(grouplistp).replace("'", "") + " join " + groupname +";"
-#                    lescript.append(result)
-#                    print "grouplistp", grouplistp,result
-#                    grouplistp=[]
-                
+                objname = "_wp" + str(n)               
                 result = "_pos = [" + v.position + "];"
                 lescript.append(result)
                 result = "_radius = " + v.placement + ";"
@@ -361,7 +357,7 @@ def scriptsqf(p):
                     lescript.append(result)                    
                 
                 if v.expActiv:
-                    condition = "true"
+                    condition = '"true"'
                     print v.expActiv
                     result = objname + " setWaypointStatements [" + condition + ", " + v.expActiv + "];" 
                     lescript.append(result)    
@@ -389,7 +385,10 @@ def scriptsqf(p):
                 result = objname + " setTriggerArea [" + str(v.a) + "," + str(v.b) + "," + v.angle + "," + tf + "];" 
                 lescript.append(result)
                 
-                if v.expActiv:
+                if v.expActiv or v.expDesactiv or v.expCond:
+                    print "v.expActiv" , v.expActiv
+                    if not v.expDesactiv: v.expDesactiv = '""'
+                    if not v.expActiv: v.expActiv = '""'
                     result = objname + " setTriggerStatements [" + v.expCond +","+  v.expActiv +","+ v.expDesactiv + "];" 
                     lescript.append(result)
                 if v.repeating: tf="True"
