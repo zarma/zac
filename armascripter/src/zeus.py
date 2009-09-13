@@ -163,11 +163,13 @@ def scriptsqf(p):
         if chaine == i[0]:
             v.azimut = i[1].rstrip(";")
         chaine = "position[]"
-        if chaine == i[0]:
-            v.position = i[1].rstrip(";").lstrip("{;").rstrip("};") + ",0"
+        if chaine == i[0]: # ajout troisième dimension
+            print "i position" , i
+            v.position = i[1].rstrip(";").lstrip("{;").rstrip("};") 
             liste = v.position.split(",")
-            liste.pop(1)
-            v.position = str(liste).lstrip("[").rstrip("]").replace("'", "")
+            t= liste.pop(1)
+            liste.append(t)
+            v.position = str(liste).lstrip("[").rstrip("]").replace("'", "")           
         chaine = "skill"
         if chaine == i[0]:
             v.skill = i[1]
